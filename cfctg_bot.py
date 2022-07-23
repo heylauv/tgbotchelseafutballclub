@@ -2,12 +2,21 @@
 from aiogram.utils import executor
 from create_bot import dp, on_shutdown
 from data_base import sqlite_db
+from create_bot import bot , dp
+from create_bot import URL_APP
 import os
 
 
 async def on_startup(_):
     print('Бот запущен,успешной работы.')
     sqlite_db.sql_start()
+
+
+async def on_startup(dp):
+    await bot.set_webhook(URL_APP)
+
+async def on_shutdown(dp):
+    await bot.dekete_webhook()
 
 
 
