@@ -1,1 +1,1 @@
-worker: python cfctg_bot.py
+web: python cfctg_bot.py
