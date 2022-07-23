@@ -4,12 +4,10 @@ import sqlite3 as sq
 from unicodedata import name
 from weakref import proxy
 from create_bot import bot
-import psycopg2 as ps
-import os
 
 def sql_start():
     global base , cur
-    base= ps.connect(os.environ.get('DATABASE_URL'),sslmode='require')
+    base= sq.connect('event_cfc.db')
     cur=base.cursor()
     if base:
         print ('Подключились к базе данных!')
