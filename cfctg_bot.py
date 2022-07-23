@@ -1,7 +1,7 @@
 
 from aiogram.utils import executor
 from create_bot import dp
-from data_base import sqlite_db
+from data_base import sqlite_db , cur , base
 from create_bot import bot , dp
 from create_bot import URL_APP
 import os
@@ -16,7 +16,9 @@ async def on_startup(dp):
     await bot.set_webhook(URL_APP)
 
 async def on_shutdown(dp):
-    await bot.dekete_webhook()
+    await bot.delete_webhook()
+    cur.close()
+    base.close()
 
 
 

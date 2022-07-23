@@ -1,7 +1,7 @@
+from os import environ
+from sqlite3 import connect
 from aiogram import Bot
 from aiogram import Dispatcher
-
-
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 storage=MemoryStorage()
