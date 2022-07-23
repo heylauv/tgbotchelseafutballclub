@@ -1,6 +1,6 @@
 
 from aiogram.utils import executor
-from create_bot import dp, on_shutdown
+from create_bot import dp
 from data_base import sqlite_db
 from create_bot import bot , dp
 from create_bot import URL_APP
