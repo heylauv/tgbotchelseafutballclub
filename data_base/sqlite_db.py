@@ -2,7 +2,7 @@
 from weakref import proxy
 from create_bot import bot
 import psycopg2 as ps
-import  os
+import os
 
 def sql_start():
     global cur , base
