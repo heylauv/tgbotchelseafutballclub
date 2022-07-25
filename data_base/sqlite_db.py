@@ -4,14 +4,14 @@ from create_bot import bot
 import psycopg2 as ps
 import os
 
-def sql_start():
+async def sql_start():
     global cur , base
     base= ps.connect (os.environ.get('DATABASE_URL') , sslmode='require')
     cur=base.cursor()
     if base:
         print ('Подключились к базе данных!')
-    base.execute ('CREATE TABLE IF NOT EXISTS eventt(img TEXT, name TEXT PRIMARY KEY, discruption TEXT)' )
-    base.cursor()
+    #base.execute ('CREATE TABLE IF NOT EXISTS eventts(img TEXT, name TEXT PRIMARY KEY, discruption TEXT)' )
+    #base.cursor()
 
 async def add_sql_command(state):
     async with state.proxy() as data:
@@ -26,5 +26,5 @@ async def sql_read2():
     return cur.execute ('SELECT * FROM eventt').fetchall()
 
 async def sql_delete_command(data):
-    cur.execute ('DELETE FROM eventt WHEN neame == ?', (data,))
+    cur.execute ('DELETE FROM eventt WHEN name == ?', (data,))
     base.commit()
