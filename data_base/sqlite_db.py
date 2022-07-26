@@ -1,5 +1,4 @@
 
-from weakref import proxy
 from create_bot import bot
 import psycopg2 as ps
 import os
@@ -28,3 +27,6 @@ async def sql_read2():
 async def sql_delete_command(data):
     cur.execute ('DELETE FROM eventt WHEN name == ?', (data,))
     base.commit()
+
+async def on_startup():
+    sql_start()
