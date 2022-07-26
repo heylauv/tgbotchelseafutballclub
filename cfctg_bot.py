@@ -6,14 +6,10 @@ from create_bot import bot , dp
 from create_bot import URL_APP
 import os
 
-
-async def on_startup(_):
-    print('Бот запущен,успешной работы.')
-
-
-
 async def on_startup(dp):
     await bot.set_webhook(URL_APP)
+    sqlite_db.sql_start()
+    print ('Бот вкл,успешной работы!')
 
 async def on_shutdown(dp):
     await bot.delete_webhook()
