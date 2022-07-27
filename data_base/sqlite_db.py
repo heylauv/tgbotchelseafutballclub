@@ -22,7 +22,7 @@ if base:
 async def add_sql_command(state):
     global base , cur
     async with state.proxy() as data:
-        cur.execute ('INSERT OR REPLACE INTO memories VALUES ( ?, ?, ? )', tuple(data.values()))
+        cur.execute ('INSERT INTO memories VALUES ( ?, ?, ? )', tuple(data.values()))
         base.commit()
 
 async def sql_read(message):
