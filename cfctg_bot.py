@@ -8,8 +8,9 @@ import os
 
 async def on_startup(dp):
     await bot.set_webhook(URL_APP)
-    sqlite_db.sql_start()
     print ('Бот вкл,успешной работы!')
+    sqlite_db.sql_start()
+
 
 async def on_shutdown(dp):
     await bot.delete_webhook()
