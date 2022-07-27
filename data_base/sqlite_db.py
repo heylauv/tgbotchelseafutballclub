@@ -1,22 +1,22 @@
 
 from create_bot import bot
-import psycopg2 as ps
-from config import host , user , password , database
+import psycopg2
+from data_base.config import host , user , password , database
 
 
 
 async def sql_start():
     global base , cur
-base= ps.connect (
+base= psycopg2.connect (
     host=host ,
     user=user ,
     password=password ,
     database=database
 )
-cur=base.cursor()
+cur = base.cursor()
 if base:
     print ('Я подключился!')
-    base.execute ('CREATE TABLE IF NOT EXISTS memories(img TEXT, name TEXT PRIMARY KEY, discruption TEXT)' )
+    cur.execute ('CREATE TABLE IF NOT EXISTS memories(img TEXT, name TEXT PRIMARY KEY, discruption TEXT)' )
     base.cursor()
 
 async def add_sql_command(state):

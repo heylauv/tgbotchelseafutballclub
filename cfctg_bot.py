@@ -4,12 +4,13 @@ from create_bot import dp
 from data_base import sqlite_db
 from create_bot import bot , dp
 from create_bot import URL_APP
+
 import os
 
 async def on_startup(dp):
     await bot.set_webhook(URL_APP)
     print ('Бот вкл,успешной работы!')
-    sqlite_db.sql_start()
+    await sqlite_db.sql_start()
 
 
 async def on_shutdown(dp):
