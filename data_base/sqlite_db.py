@@ -35,12 +35,12 @@ async def add_sql_command(state):
 
 async def sql_read(message):
     global base , cur
-    for ret in cur.execute('SELECT * FROM memories').fetchall():
+    for ret in cur.execute('SELECT * FROM memories').fetchone():
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
 async def sql_read2():
     global base , cur
-    return cur.execute ('SELECT * FROM memories').fetchall()
+    return cur.execute ('SELECT * FROM memories').fetchone()
 
 async def sql_delete_command(data):
     global base , cur
