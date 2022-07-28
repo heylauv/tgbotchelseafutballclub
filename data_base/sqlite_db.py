@@ -36,8 +36,9 @@ async def add_sql_command(state):
 async def sql_read(message):
     global base , cur
     for ret in cur.execute('SELECT * FROM memories'):
+        cur.fetchall()
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
-    cur.fetchall()
+
 
 async def sql_read2():
     global base , cur
