@@ -15,20 +15,23 @@ cur = base.cursor()
 async def sql_start():
     if base:
         print ('Я подключился!')
-    #    cur.execute (
-    #"""CREATE TABLE IF NOT EXISTS memories(
-    #    img varchar (50) NOT NULL,
-     #   name varchar (100) PRIMARY KEY,
-     #   discruption varchar (200) NOT NULL);"""
-      # )
-   # base.cursor()
-    #base.commit()
+        cur.execute (
+    """CREATE TABLE IF NOT EXISTS memories(
+        img varchar (50) NOT NULL,
+        name varchar (100) PRIMARY KEY,
+        discruption varchar (200) NOT NULL);"""
+       )
+    base.cursor()
+    base.commit()
 
 async def add_sql_command(state):
     async with state.proxy() as data:
-        cur.execute(
-            """INSERT INTO memories VALUES
-            (' ? ',' ? ',' ? ' ); """ , tuple(data.values()))
+        try:
+            cur.execute(
+        """INSERT INTO memories VALUES
+        (' ? ',' ? ',' ? ' ); """ , tuple(data.values()))
+        except:
+            pass
     base.commit()
 
 async def sql_read(message):
