@@ -43,9 +43,8 @@ async def sql_read(message):
 
 async def sql_read2():
     global base , cur
-    return cur.execute ('SELECT * FROM memories')
-cur.fetchall()
-base.commit()
+    return cur.execute ('SELECT * FROM memories').fetchall()
+
 
 async def sql_delete_command(data):
     global base , cur
