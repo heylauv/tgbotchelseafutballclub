@@ -4,9 +4,6 @@ import psycopg2
 from data_base.config import host , user , password , database
 
 
-
-async def sql_start():
-    global base , cur
 base= psycopg2.connect (
     host=host ,
     user=user ,
@@ -14,9 +11,11 @@ base= psycopg2.connect (
     database=database
 )
 cur = base.cursor()
-if base:
-    print ('Я подключился!')
-    cur.execute (
+
+async def sql_start():
+    if base:
+        print ('Я подключился!')
+        cur.execute (
     """CREATE TABLE IF NOT EXISTS memories(
         img varchar (50) NOT NULL,
         name varchar (100) PRIMARY KEY,
@@ -26,11 +25,11 @@ if base:
     base.commit()
 
 async def add_sql_command(state):
-    global base , cur
     async with state.proxy() as data:
-             cur.execute (
+        cur.execute (
             """INSERT INTO memories (img , name , discruption) VALUES
             (' ? ',' ? ',' ? ' ); """ , tuple(data.values()))
+    base.commit()
 
 async def sql_read(message):
     global base , cur
