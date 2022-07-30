@@ -28,7 +28,7 @@ try:
         async with state.proxy() as data:
                 cur.execute(
             """INSERT INTO memorydates (photos , namess , discriptions) VALUES
-            ( ? , ? , ? ); """ , tuple(data.values()))
+            (' ? ',' ? ',' ? '); """ , tuple(data.values()))
 
     async def sql_read(message):
         cur.execute('SELECT * FROM memorydates')
