@@ -20,7 +20,7 @@ try:
         """CREATE TABLE IF NOT EXISTS memorydates(
         photos TEXT  NOT NULL,
         namess varchar (100) PRIMARY KEY,
-        discriptions varchar (200) NOT NULL);"""
+        discriptions TEXT  NOT NULL);"""
         )
         base.cursor()
 
@@ -28,7 +28,7 @@ try:
         async with state.proxy() as data:
                 cur.execute(
             """INSERT INTO memorydates (photos , namess , discriptions) VALUES
-            (' ? ',' ? ',' ? '); """ , tuple(data.values()))
+            ( ? , ? , ? ); """ , tuple(data.values()))
 
     async def sql_read(message):
         cur.execute('SELECT * FROM memorydates')
