@@ -28,10 +28,11 @@ async def add_sql_command(state):
     async with state.proxy() as data:
             cur.execute(
             """INSERT INTO memoriess (img , name , discruption) VALUES
-            ( ? , ? , ?  ); """ , tuple(data.values()))
+            (' ? ',' ? ',' ? '); """ , tuple(data.values()))
 
 async def sql_read(message):
-    for ret in cur.execute('SELECT * FROM memoriess') , cur.fetchall():
+    cur.execute('SELECT * FROM memoriess')
+    for ret in cur.fetchall():
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
 async def sql_read2():
