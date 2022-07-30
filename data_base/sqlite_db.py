@@ -27,7 +27,7 @@ try:
     async def add_sql_command(state):
         async with state.proxy() as data:
                 cur.execute(
-            """INSERT INTO memorydate (imgg , names , discruptionn) VALUES
+            """INSERT INTO memorydate (photo , names , discruptionn) VALUES
             (' ? ',' ? ',' ? '); """ , tuple(data.values()))
 
     async def sql_read(message):
