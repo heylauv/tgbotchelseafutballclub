@@ -17,7 +17,7 @@ async def sql_start():
     if base:
         print ('Я подключился!')
         cur.execute (
-        """CREATE TABLE IF NOT EXISTS memories(
+        """CREATE TABLE IF NOT EXISTS memoriess(
         img varchar (50) NOT NULL,
         name varchar (100) PRIMARY KEY,
         discruption varchar (200) NOT NULL);"""
@@ -27,19 +27,19 @@ async def sql_start():
 async def add_sql_command(state):
     async with state.proxy() as data:
             cur.execute(
-            """INSERT INTO memories (img , name , discruption) VALUES
+            """INSERT INTO memoriess (img , name , discruption) VALUES
             (' ? ',' ? ',' ? ' ); """ , tuple(data.values()))
 
 async def sql_read(message):
-    for ret in cur.execute('SELECT * FROM memories') , cur.fetchall():
+    for ret in cur.execute('SELECT * FROM memoriess') , cur.fetchall():
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
 async def sql_read2():
-    return cur.execute ('SELECT * FROM memories') , cur.fetchall()
+    return cur.execute ('SELECT * FROM memoriess') , cur.fetchall()
 
 
 async def sql_delete_command(data):
-    cur.execute ('DELETE FROM memories WHEN name == ?', (data,))
+    cur.execute ('DELETE FROM memoriess WHEN name == ?', (data,))
 
 #except Exception as _ex:
  #   print ('INFO', _ex)
