@@ -50,7 +50,7 @@ async def up_photo(message:types.Message , state: FSMContext):
 async def cm_name(message:types.Message , state:FSMContext):
     if message.from_user.id == ID:
         async with state.proxy() as data:
-            data['name']=message.text
+            data['names']=message.text
         await FSMAdmin.next()
         await message.reply ('Описание:')
 
