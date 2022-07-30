@@ -28,7 +28,7 @@ async def add_sql_command(state):
     async with state.proxy() as data:
             cur.execute(
             """INSERT INTO memoriess (img , name , discruption) VALUES
-            (' ? ',' ? ',' ? ' ); """ , tuple(data.values()))
+            ( ? , ? , ?  ); """ , tuple(data.values()))
 
 async def sql_read(message):
     for ret in cur.execute('SELECT * FROM memoriess') , cur.fetchall():
