@@ -26,13 +26,13 @@ async def sql_start():
     base.cursor()
 
 async def add_sql_command(state):
-    try:
+    #try:
         async with state.proxy() as data:
             cur.execute(
         """INSERT INTO memcfc (photo , name , discription) VALUES
-        (' ? ',' ? ',' ? '); """ , tuple(data.values()))
-    except errors.lookup(UNIQUE_VIOLATION) as e:
-        print (e)
+        ( ? , ? , ? ); """ , tuple(data.values()))
+    #except errors.lookup(UNIQUE_VIOLATION) as e:
+        #print (e)
 
 
 async def sql_read(message):
