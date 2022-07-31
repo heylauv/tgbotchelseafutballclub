@@ -2,6 +2,8 @@
 from create_bot import bot
 import psycopg2
 from data_base.config import host , user , password , database
+from psycopg2.errorcodes import UNIQUE_VIOLATION
+from psycopg2 import errors
 
 try:
     base= psycopg2.connect (
@@ -42,8 +44,8 @@ try:
     async def sql_delete_command(data):
         cur.execute ('DELETE FROM memcfc WHEN name == ?', (data,))
 
-except Exception as _ex:
-    print ('INFO', _ex)
+except errors.lookup(UNIQUE_VIOLATION) as e:
+    print ('INFO UV')
 finally:
     if base:
-        print('Включаюсь!')
+        print('Включаюсь')
