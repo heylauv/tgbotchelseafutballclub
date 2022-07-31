@@ -3,7 +3,7 @@ from create_bot import bot
 import psycopg2
 from data_base.config import host , user , password , database
 from psycopg2.errorcodes import UNIQUE_VIOLATION
-from psycopg2 import errors
+from psycopg2 import Error
 
 try:
     base= psycopg2.connect (
@@ -44,7 +44,9 @@ try:
     async def sql_delete_command(data):
         cur.execute ('DELETE FROM memcfc WHEN name == ?', (data,))
 
-except errors.lookup(UNIQUE_VIOLATION) as e:
+except psycopg2.Error as e:
+    print ('UniqueViolation: duplicate key value violates unique constraint "memcfc_pkey"')
+    error=e.pgcode
     print ('INFO UV')
 finally:
     if base:
