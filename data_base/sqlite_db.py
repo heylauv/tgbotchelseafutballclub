@@ -17,30 +17,30 @@ try:
         if base:
             print ('Я подключился!')
         cur.execute (
-        """CREATE TABLE IF NOT EXISTS memorydates(
-        photos TEXT  NOT NULL,
-        namess varchar (100) PRIMARY KEY,
-        discriptions TEXT  NOT NULL);"""
+        """CREATE TABLE IF NOT EXISTS memcfc(
+        photo TEXT  NOT NULL,
+        name varchar (100) PRIMARY KEY,
+        discription TEXT  NOT NULL);"""
         )
         base.cursor()
 
     async def add_sql_command(state):
         async with state.proxy() as data:
                 cur.execute(
-            """INSERT INTO memorydates (photos , namess , discriptions) VALUES
+            """INSERT INTO memcfc (photo , name , discription) VALUES
             (' ? ',' ? ',' ? '); """ , tuple(data.values()))
 
     async def sql_read(message):
-        cur.execute('SELECT * FROM memorydates')
+        cur.execute('SELECT * FROM memcfc')
         for ret in cur.fetchall():
             await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
     async def sql_read2():
-        return cur.execute ('SELECT * FROM memorydates') , cur.fetchall()
+        return cur.execute ('SELECT * FROM memcfc') , cur.fetchall()
 
 
     async def sql_delete_command(data):
-        cur.execute ('DELETE FROM memorydates WHEN name == ?', (data,))
+        cur.execute ('DELETE FROM memcfc WHEN name == ?', (data,))
 
 except Exception as _ex:
     print ('INFO', _ex)
