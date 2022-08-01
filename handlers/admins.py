@@ -76,7 +76,7 @@ async def memories_dell (message:types.Message):
     if message.from_user.id == ID:
         read = await sqlite_db.sql_read2()
         for ret in read:
-            await bot.send_photo (message.from_user.id , ret[0], f'{ret[1]} {ret [2]}\nНадеюсь вам понравилось воспоминание! {ret[-1]}')
+            await bot.send_photo (message.from_user.id , ret[0], f'{ret[1]} {ret [2]}\nНадеюсь вам понравилось воспоминание! ')
             await bot.send_message (message.from_user.id , text='Удалить это?', reply_markup=InlineKeyboardMarkup().\
                     add(InlineKeyboardButton(f' Удалить {ret[1]}', callback_data= f'del {ret[1]}')))
 
