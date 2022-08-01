@@ -18,11 +18,10 @@ async def sql_start():
     if base:
          print ('Я подключился!')
     cur.execute (
-     """CREATE TABLE IF NOT EXISTS memorycfc(
-        rec_id serial primary key,
+     """CREATE TABLE IF NOT EXISTS memorycfcb(
         photo TEXT  NOT NULL,
         name TEXT NOT NULL,
-        discription TEXT  NOT NULL);"""
+        description TEXT  NOT NULL);"""
      )
     base.cursor()
 
@@ -30,20 +29,20 @@ async def add_sql_command(state):
     #try:
         async with state.proxy() as data:
             cur.execute(
-        """INSERT INTO memorycfc (photo , name , discription) VALUES
+        """INSERT INTO memorycfcb (photo , name , description) VALUES
         (%s, %s, %s); """ , tuple(data.values()))
     #except errors.lookup(UNIQUE_VIOLATION) as e:
         #print (e)
 
 
 async def sql_read(message):
-    cur.execute('SELECT * FROM memorycfc')
+    cur.execute('SELECT * FROM memorycfcb')
     for ret in cur.fetchall():
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
 async def sql_read2():
-    return cur.execute ('SELECT * FROM memorycfc') , cur.fetchall()
+    return cur.execute ('SELECT * FROM memorycfcb') , cur.fetchall()
 
 
 async def sql_delete_command(data):
-    cur.execute ('DELETE FROM memorycfc WHEN name == ?', (data,))
+    cur.execute ('DELETE FROM memorycfcb WHEN name == ?', (data,))
