@@ -30,8 +30,8 @@ async def add_sql_command(state):
     #try:
         async with state.proxy() as data:
             cur.execute(
-        """INSERT INTO memorycfc (rec_id , photo , name , discription) VALUES
-        (?, ?, ?, ?); """ , tuple(data.values()))
+        """INSERT INTO memorycfc (photo , name , discription) VALUES
+        (?, ?, ?); """ , tuple(data.values()))
     #except errors.lookup(UNIQUE_VIOLATION) as e:
         #print (e)
 
