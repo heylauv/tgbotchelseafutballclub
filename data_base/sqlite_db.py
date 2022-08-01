@@ -31,7 +31,7 @@ async def add_sql_command(state):
         async with state.proxy() as data:
             cur.execute(
         """INSERT INTO memorycfc (photo , name , discription) VALUES
-        (?, ?, ?); """ , tuple(data.values()))
+        (%s, %s, %s); """ , tuple(data.values()))
     #except errors.lookup(UNIQUE_VIOLATION) as e:
         #print (e)
 
