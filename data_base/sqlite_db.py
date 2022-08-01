@@ -41,7 +41,8 @@ async def sql_read(message):
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
 async def sql_read2():
-    return cur.execute('SELECT * FROM memorycfcb') , cur.fetchall()
+    cur.execute('SELECT * FROM memorycfcb')
+    return cur.fetchall()
 
 
 async def sql_delete_command(data):
