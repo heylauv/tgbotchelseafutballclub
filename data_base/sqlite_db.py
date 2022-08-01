@@ -45,4 +45,4 @@ async def sql_read2():
 
 
 async def sql_delete_command(data):
-    cur.execute ('DELETE FROM memorycfcb WHEN name == ?', (data,))
+    cur.execute ('DELETE FROM memorycfcb WHEN name == %s', (data,))
