@@ -2,8 +2,7 @@
 from create_bot import bot
 import psycopg2
 from data_base.config import host , user , password , database
-#from psycopg2.errorcodes import UNIQUE_VIOLATION
-#from psycopg2 import errors
+
 
 base= psycopg2.connect (
         host=host ,
@@ -11,7 +10,7 @@ base= psycopg2.connect (
         password=password ,
         database=database
         )
-#base.autocommit=True
+base.autocommit= True
 cur = base.cursor()
 
 async def sql_start():
@@ -27,21 +26,17 @@ async def sql_start():
     base.commit()
 
 async def add_sql_command(state):
-    #try:
-        async with state.proxy() as data:
-            cur.execute(
-        """INSERT INTO memorycfcb (photo , name , description) VALUES
-        (%s, %s, %s); """ , tuple(data.values()))
+    async with state.proxy() as data:
+        cur.execute(
+            """INSERT INTO memorycfcb (photo , name , description) VALUES
+            (%s, %s, %s); """ , tuple(data.values()))
         base.commit()
-    #except errors.lookup(UNIQUE_VIOLATION) as e:
-        #print (e)
-
 
 async def sql_read(message):
     cur.execute('SELECT * FROM memorycfcb')
     for ret in cur.fetchall():
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
-    base.commit()
+
 
 async def sql_read2():
     cur.execute('SELECT * FROM memorycfcb')
