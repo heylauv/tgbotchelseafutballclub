@@ -44,5 +44,5 @@ async def sql_read2():
 
 
 async def sql_delete_command(data):
-    cur.execute ('DELETE FROM memorycfcblues WHERE name = %s', (data,))
+    cur.fetchall('DELETE FROM memorycfcblues WHERE name = %s', (data,))
     base.commit()
