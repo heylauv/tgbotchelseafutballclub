@@ -11,7 +11,7 @@ base= psycopg2.connect (
         password=password ,
         database=database
         )
-base.autocommit=True
+#base.autocommit=True
 cur = base.cursor()
 
 async def sql_start():
@@ -24,6 +24,7 @@ async def sql_start():
         description TEXT  NOT NULL);"""
      )
     base.cursor()
+    base.commit()
 
 async def add_sql_command(state):
     #try:
@@ -31,6 +32,7 @@ async def add_sql_command(state):
             cur.execute(
         """INSERT INTO memorycfcb (photo , name , description) VALUES
         (%s, %s, %s); """ , tuple(data.values()))
+        base.commit()
     #except errors.lookup(UNIQUE_VIOLATION) as e:
         #print (e)
 
@@ -39,6 +41,7 @@ async def sql_read(message):
     cur.execute('SELECT * FROM memorycfcb')
     for ret in cur.fetchall():
         await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
+    base.commit()
 
 async def sql_read2():
     cur.execute('SELECT * FROM memorycfcb')
