@@ -29,7 +29,7 @@ try:
         async with state.proxy() as data:
             cur.execute(
                 """INSERT INTO cfcblues (photo , name , description) VALUES
-                (%s, %s, %s, %s); """ , tuple(data.values()))
+                (%s, %s, %s); """ , tuple(data.values()))
             base.commit()
 
     async def sql_read(message):
