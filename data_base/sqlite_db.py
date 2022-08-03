@@ -51,5 +51,3 @@ except Exception as er:
     print (er)
 finally:
     print ('DB closed.')
-    cur.close()
-    base.close()
