@@ -28,8 +28,8 @@ try:
     async def add_sql_command(state):
         async with state.proxy() as data:
             cur.execute(
-                """INSERT INTO cfcblue (photo , name , description) VALUES
-                (%s, %s, %s); """ , tuple(data.values()))
+                """INSERT INTO cfcblue (id , photo , name , description) VALUES
+                (%s, %s, %s, %s); """ , tuple(data.values()))
             base.commit()
 
     async def sql_read(message):
