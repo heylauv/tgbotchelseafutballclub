@@ -17,7 +17,6 @@ try:
              print ('Я подключился!')
         cur.execute (
         """CREATE TABLE IF NOT EXISTS cfcblue(
-        id INTEGER NOT NULL,
         photo TEXT  NOT NULL,
         name TEXT primary key NOT NULL,
         description TEXT  NOT NULL);"""
@@ -28,8 +27,8 @@ try:
     async def add_sql_command(state):
         async with state.proxy() as data:
             cur.execute(
-                """INSERT INTO cfcblue (id , photo , name , description) VALUES
-                (%s, %s, %s, %s); """ , tuple(data.values()))
+                """INSERT INTO cfcblue (photo , name , description) VALUES
+                (%s, %s, %s); """ , tuple(data.values()))
             base.commit()
 
     async def sql_read(message):
@@ -44,7 +43,7 @@ try:
 
 
     async def sql_delete_command(data):
-        cur.execute('DELETE FROM cfcblue WHERE id:: integer = %s', (data, ))
+        cur.execute('DELETE FROM cfcblue WHERE name= %s', (data, ))
         base.commit()
 
 except Exception as er:
