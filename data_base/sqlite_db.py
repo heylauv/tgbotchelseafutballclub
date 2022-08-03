@@ -16,8 +16,8 @@ try:
         if base:
              print ('Я подключился!')
         cur.execute (
-        """CREATE TABLE IF NOT EXISTS cfcblues(
-        id SERIAL NOT NULL,
+        """CREATE TABLE IF NOT EXISTS cfcblue(
+        id INTEGER NOT NULL,
         photo TEXT  NOT NULL,
         name TEXT primary key NOT NULL,
         description TEXT  NOT NULL);"""
@@ -28,23 +28,23 @@ try:
     async def add_sql_command(state):
         async with state.proxy() as data:
             cur.execute(
-                """INSERT INTO cfcblues (photo , name , description) VALUES
+                """INSERT INTO cfcblue (photo , name , description) VALUES
                 (%s, %s, %s); """ , tuple(data.values()))
             base.commit()
 
     async def sql_read(message):
-        cur.execute('SELECT * FROM cfcblues')
+        cur.execute('SELECT * FROM cfcblue')
         for ret in cur.fetchall():
             await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
 
 
     async def sql_read2():
-        cur.execute('SELECT * FROM cfcblues')
+        cur.execute('SELECT * FROM cfcblue')
         return cur.fetchall()
 
 
     async def sql_delete_command(data):
-        cur.execute('DELETE FROM cfcblues WHERE id:: integer = %s', (data, ))
+        cur.execute('DELETE FROM cfcblue WHERE id:: integer = %s', (data, ))
         base.commit()
 
 except Exception as er:
