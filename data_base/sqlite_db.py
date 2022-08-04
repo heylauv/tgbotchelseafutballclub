@@ -27,7 +27,7 @@ try:
         async with state.proxy() as data:
             cur.execute(
                 """INSERT INTO cfc (photo , name , description) VALUES
-                (%s, %s, %s); """ , tuple(data.values()))
+                (?, ?, ?); """ , tuple(data.values()))
             base.commit()
 
     async def sql_read(message):
@@ -42,7 +42,7 @@ try:
 
 
     async def sql_delete_command(data):
-        cur.execute('DELETE FROM cfc WHERE name= "%s"', (data, ))
+        cur.execute('DELETE FROM cfc WHERE name= ?', (data, ))
         base.commit()
 
 except Exception as er:
