@@ -2,7 +2,6 @@
 from create_bot import bot
 import psycopg2
 from data_base.config import host , user , password , database
-from psycopg2 import Error
 
 base= psycopg2.connect (
         host=host ,
@@ -21,7 +20,7 @@ try:
         name TEXT primary key NOT NULL,
         description TEXT  NOT NULL);"""
         )
-        base.cursor()
+        #base.cursor()
         base.commit()
 
     async def add_sql_command(state):

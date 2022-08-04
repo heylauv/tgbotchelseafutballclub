@@ -9,6 +9,7 @@ from data_base import sqlite_db
 from data_base.sqlite_db import add_sql_command
 from keyboards import admins_kb
 from aiogram.types import InlineKeyboardButton ,InlineKeyboardMarkup
+from data_base.sqlite_db import base
 
 ID=None
 
@@ -69,7 +70,7 @@ async def cm_discription (message:types.Message , state: FSMContext):
 async def callbeck_run (callbeck_query: types.CallbackQuery):
     await sqlite_db.sql_delete_command (callbeck_query.data.replace ('del', ''))
     await callbeck_query.answer (text=f' {callbeck_query.data.replace ("del" , "")} удалена. ' , show_alert=True )
-
+    base.commit()
 
 @dp.message_handler (commands='memoriesdell')
 async def memories_dell (message:types.Message):
