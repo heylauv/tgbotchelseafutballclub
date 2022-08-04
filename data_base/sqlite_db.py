@@ -42,7 +42,7 @@ try:
 
 
     async def sql_delete_command(data):
-        cur.execute('DELETE FROM cfc WHERE name= %s', (data, ))
+        cur.execute('DELETE FROM cfc WHERE name= "%s"', (data, ))
         base.commit()
 
 except Exception as er:
