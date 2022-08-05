@@ -66,10 +66,10 @@ async def cm_discription (message:types.Message , state: FSMContext):
         await add_sql_command(state)
         await state.finish()
 
-@dp.callback_query_handler (lambda x: x.data and x.data.startswith ('del '))
-async def callbeck_run (callbeck_query: types.CallbackQuery):
-    await sqlite_db.sql_delete_command (callbeck_query.data.replace ('del ', ''))
-    await callbeck_query.answer (text=f' {callbeck_query.data.replace ("del " , "")} удалена. ' , show_alert=True )
+@dp.callback_query_handler(lambda x: x.data and x.data.startswith('del '))
+async def del_callbeck_run(callbeck_query: types.CallbackQuery):
+    await sql_delete_command (callbeck_query.data.replace('del ', ''))
+    await callbeck_query.answer (text=f' {callbeck_query.data.replace ("del ", "")} удалена. ' , show_alert=True )
 
 
 @dp.message_handler (commands='memoriesdell')

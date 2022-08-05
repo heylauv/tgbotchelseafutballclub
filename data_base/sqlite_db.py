@@ -22,6 +22,7 @@ try:
         )
         #base.cursor()
         base.commit()
+        cur.commit()
 
     async def add_sql_command(state):
         async with state.proxy() as data:
@@ -34,7 +35,7 @@ try:
         cur.execute('SELECT * FROM cfc')
         for ret in cur.fetchall():
             await bot.send_photo(message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret[2]}\nНадеюсь вам понравилось воспоминание!')
-
+        base.commit()
 
     async def sql_read2():
         cur.execute('SELECT * FROM cfc')
@@ -42,7 +43,7 @@ try:
 
 
     async def sql_delete_command(data):
-        cur.execute('DELETE FROM cfc WHERE name= %s', ('data', ))
+        cur.execute('DELETE FROM cfc WHERE name = %s', (data, ))
         base.commit()
 
 except Exception as er:
