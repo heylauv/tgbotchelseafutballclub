@@ -66,10 +66,10 @@ async def cm_discription (message:types.Message , state: FSMContext):
         await add_sql_command(state)
         await state.finish()
 
-@dp.callback_query_handler (lambda x: x.data and x.data.startswith ("del"))
+@dp.callback_query_handler (lambda x: x.data and x.data.startswith ('del '))
 async def callbeck_run (callbeck_query: types.CallbackQuery):
-    await sqlite_db.sql_delete_command (callbeck_query.data.replace ("del", " "))
-    await callbeck_query.answer (text=f' {callbeck_query.data.replace ("del" , "")} удалена. ' , show_alert=True )
+    await sqlite_db.sql_delete_command (callbeck_query.data.replace ('del ', ''))
+    await callbeck_query.answer (text=f' {callbeck_query.data.replace ("del " , "")} удалена. ' , show_alert=True )
 
 
 @dp.message_handler (commands='memoriesdell')
@@ -77,7 +77,7 @@ async def memories_dell (message:types.Message):
     if message.from_user.id == ID:
         read = await sqlite_db.sql_read2()
         for ret in read:
-            await bot.send_photo (message.from_user.id , ret[0], f'{ret[1]} {ret [2]}\nНадеюсь вам понравилось воспоминание! ')
+            await bot.send_photo (message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret [2]}\nНадеюсь вам понравилось воспоминание! ')
             await bot.send_message (message.from_user.id , text='Удалить это?', reply_markup=InlineKeyboardMarkup().\
                     add(InlineKeyboardButton(f' Удалить {ret[1]}', callback_data= f'del {ret[1]}')))
 
