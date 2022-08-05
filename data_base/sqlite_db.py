@@ -22,7 +22,6 @@ try:
         )
         #base.cursor()
         base.commit()
-        cur.commit()
 
     async def add_sql_command(state):
         async with state.proxy() as data:
@@ -39,6 +38,7 @@ try:
 
     async def sql_read2():
         cur.execute('SELECT * FROM cfc')
+        base.commit()
         return cur.fetchall()
 
 
