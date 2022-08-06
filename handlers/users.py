@@ -47,7 +47,8 @@ async def command_about (message: types.Message):
 async def command_rules(message: types.Message):
     await bot.send_message(message.from_user.id, 'ПРАВИЛА ЧАТА:\nЗапрещается:\n1.Приминение открытого или заув.мата\n2.Дискриминация\n3.Пропаганда\n4.Оскорбление участников\n5.Провокация\nПРАВИЛА БУДУТ ДОПОЛНЯТЬСЯ!' )
 
-
+async def command_youtube(message:types.Message):
+    await bot.send_message(message.from_user.id,'Бот умеет искать видео в YouTube!\nВоспользоваться:\n Пропишите @StamfordLionBot и название видео.\n Работает как и в лс так и чатах!')
 
 
 async def command_memories(message: types.Message):
@@ -66,4 +67,5 @@ def rg_handlers_users (dp=Dispatcher):
     dp.register_message_handler(command_players,commands=['Игроки Челси 💂‍♂️'])
     dp.register_message_handler(command_about,commands=['О боте 📌'])
     dp.register_message_handler(command_rules,commands=['Правила ❗'])
+    dp.register_message_handler(command_youtube,commands=['YouTube 🎬'])
     dp.register_message_handler(command_memories,commands=['Воспоминания ✨'])
