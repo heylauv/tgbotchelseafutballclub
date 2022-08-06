@@ -10,6 +10,7 @@ from data_base.sqlite_db import add_sql_command
 from keyboards import admins_kb
 from aiogram.types import InlineKeyboardButton ,InlineKeyboardMarkup
 from data_base.sqlite_db import sql_delete_command
+from keyboards.users_kb import kb_users
 
 ID=None
 
@@ -72,23 +73,26 @@ async def del_callbeck_run(callbeck_query: types.CallbackQuery):
     await callbeck_query.answer (text=f' {callbeck_query.data.replace ("del ", "")} удалена. ' , show_alert=True )
 
 
-@dp.message_handler (commands='memoriesdell')
+@dp.message_handler (commands='Удалить воспоминания ⚙')
 async def memories_dell (message:types.Message):
     if message.from_user.id == ID:
         read = await sqlite_db.sql_read2()
         for ret in read:
-            await bot.send_photo (message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret [2]}\nНадеюсь вам понравилось воспоминание! ', reply_markup=admins_kb.button_case_delete )
+            await bot.send_photo (message.from_user.id , ret[0], f'{ret[1]}\nОписание:\n{ret [2]}\nНадеюсь вам понравилось воспоминание! ')
             await bot.send_message (message.from_user.id , text='Удалить это?', reply_markup=InlineKeyboardMarkup().\
                     add(InlineKeyboardButton(f' Удалить {ret[1]}', callback_data= f'del {ret[1]}')))
 
 
+@dp.message_handler(commands=['Меню пользователя ✅'])
+async def command_start(message: types.Message):
+        await bot.send_message(message.from_user.id, 'Привет,самый преданный болельщик Челси,<3\nКоманды бота /help', reply_markup=kb_users)
 
 
 
 def register_handler_admins (dp : Dispatcher):
     dp.register_message_handler(make_changes_command,commands=['adm'], is_chat_admin=True)
     dp.register_message_handler(cm_memories_show, commands=['Добавить воспоминания 📺'],state=None)
-    dp.register_message_handler (otmena_command , state="*", commands= ['Отмена'] , reply_markup=admins_kb.button_case_otmena)
+    dp.register_message_handler (otmena_command , state="*", commands= ['Отмена ❌'] )
     dp.register_message_handler (otmena_command , Text(equals='Отмена', ignore_case=True), state="*")
     dp.register_message_handler(up_photo, content_types=['photo'], state=FSMAdmin.photo)
     dp.register_message_handler(cm_name,state=FSMAdmin.name)

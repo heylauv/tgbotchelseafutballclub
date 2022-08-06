@@ -15,10 +15,12 @@ async def command_start(message: types.Message):
 async def command_bot (message:types.Message) :
         await message.reply ('Хочешь узнать больше инфы обо мне и о Челси?\nТогда тебе в ЛС!\n@StamfordLionBot')
 
+async def command_help (message: types.Message):
+    await bot.send_message(message.from_user.id, '/start-Бот вкл\n/help-Команды бота\n/bot-Пересылает в ЛС(в чатах)')
 
 #@dp.message_handler(commands=['хелп'])
-async def command_help (message: types.Message):
-    await bot.send_message(message.from_user.id, '/start-Бот вкл\n/help-Команды бота\n/match-Показывает след.матч\n/table-Таблица АПЛ\n/players-Игроки фк"Челси"\n/about-Инфа о боте\n/rules-Правила чата\n/memories-Воспоминания связанные с Челси.')
+async def command_helps (message: types.Message):
+    await bot.send_message(message.from_user.id, 'Инфа о кнопках:\nСлед.матч ⚔-Показывает след.матч\nТаблица АПЛ 📜-Таблица АПЛ live\nИгроки Челси 💂‍♂️-Игроки фк"Челси"\nО боте 📌-Инфа о боте\nПравила ❗-Правила чата\nВоспоминания ✨-Воспоминания связанные с Челси.')
 
 
 #@dp.message_handler(commands=['матч'])
@@ -38,7 +40,7 @@ async def command_players (message: types.Message):
 
 #@dp.message_handler(commands=['оботе'])
 async def command_about (message: types.Message):
-    await bot.send_message(message.from_user.id, 'Бот "Стэмфорд"-талисман футбольного клуба Челси,ваш верный помошник!\nПо всем вопросам по боту сюда:\n@otherworlldly\nБолеем вместе<3\nБот умеет /help, фильтрация мата в чатах.' )
+    await bot.send_message(message.from_user.id, 'Бот "Стэмфорд"-талисман футбольного клуба Челси,ваш верный помошник!\nПо всем вопросам по боту сюда:\n@otherworlldly\nБолеем вместе<3\nБот так же умеет фильтровать мат в чатах.' )
 
 
 #@dp.message_handler(commands=['правила'])
@@ -58,9 +60,10 @@ def rg_handlers_users (dp=Dispatcher):
     dp.register_message_handler(command_start,commands=['start'])
     dp.register_message_handler(command_bot,commands=['bot'])
     dp.register_message_handler(command_help,commands=['help'])
-    dp.register_message_handler(command_match,commands=['match'])
-    dp.register_message_handler(command_table,commands=['table'])
-    dp.register_message_handler(command_players,commands=['players'])
-    dp.register_message_handler(command_about,commands=['about'])
-    dp.register_message_handler(command_rules,commands=['rules'])
-    dp.register_message_handler(command_memories,commands=['memories'])
+    dp.register_message_handler(command_helps,commands=['Помощь 🆙'])
+    dp.register_message_handler(command_match,commands=['След.матч ⚔ '])
+    dp.register_message_handler(command_table,commands=['Таблица АПЛ 📜'])
+    dp.register_message_handler(command_players,commands=['Игроки Челси 💂‍♂️'])
+    dp.register_message_handler(command_about,commands=['О боте 📌'])
+    dp.register_message_handler(command_rules,commands=['Правила ❗'])
+    dp.register_message_handler(command_memories,commands=['Воспоминания ✨'])
