@@ -15,11 +15,11 @@ async def command_bot (message:types.Message) :
         await message.reply ('Хочешь узнать больше инфы обо мне и о Челси?\nТогда тебе в ЛС!\n@StamfordLionBot')
 
 async def command_help (message: types.Message):
-    await bot.send_message(message.from_user.id, '/start-Бот вкл\n/adm-Для админов.\n/bot-Инфо в ЛС(в чатах)')
+    await bot.send_message(message.from_user.id, 'КОМАНДЫ:\n/help-Что бот умеет.\n/adm-Для админов.\n/bot-Инфо в ЛС(в чатах)\nКНОПКИ:\nМатч⚔- Показывает след.матч.\nТаблица📜- Таблица АПЛ на текущий момент.\nСостав💂‍♂️- Игроки фк"Челси".\nБот📌- Инфа о боте.\nПравила❗- Правила чата.\nВоспоминания✨- Воспоминания связанные с Челси.\nYouTube🎬- Поиск видео в Ютубе.\nТрансляция⚽- Ссылка на матч(Не ручаюсь за валидность.)')
 
 #@dp.message_handler(commands=['хелп'])
-async def command_helps (message: types.Message):
-    await bot.send_message(message.from_user.id, 'Матч⚔- Показывает след.матч.\nТаблица📜- Таблица АПЛ на текущий момент.\nСостав💂‍♂️- Игроки фк"Челси".\nБот📌- Инфа о боте.\nПравила❗- Правила чата.\nВоспоминания✨- Воспоминания связанные с Челси.\nYouTube🎬- Поиск видео в Ютубе.')
+#async def command_ (message: types.Message):
+ #   await bot.send_message(message.from_user.id, 'Матч⚔- Показывает след.матч.\nТаблица📜- Таблица АПЛ на текущий момент.\nСостав💂‍♂️- Игроки фк"Челси".\nБот📌- Инфа о боте.\nПравила❗- Правила чата.\nВоспоминания✨- Воспоминания связанные с Челси.\nYouTube🎬- Поиск видео в Ютубе.')
 
 
 #@dp.message_handler(commands=['матч'])
@@ -51,7 +51,7 @@ async def command_youtube(message:types.Message):
     await bot.send_message(message.from_user.id,'Бот умеет искать видео в YouTube!\nПропишите @StamfordLionBot и название видео.\nРаботает как в лс так и чатах!')
 
 async def command_stream (message: types.Message):
-    await bot.send_message(message.from_user.id, 'Трансляция:', reply_markup=urlstream4)
+    await bot.send_message(message.from_user.id, 'Трансляция⚽', reply_markup=urlstream4)
 
 async def command_memories(message: types.Message):
     await sqlite_db.sql_read(message)
@@ -63,12 +63,12 @@ def rg_handlers_users (dp=Dispatcher):
     dp.register_message_handler(command_start,commands=['start'])
     dp.register_message_handler(command_bot,commands=['bot'])
     dp.register_message_handler(command_help,commands=['help'])
-    dp.register_message_handler(command_helps,commands=['Помощь🆙'])
+    #dp.register_message_handler(command_helps,commands=['Помощь🆙'])
     dp.register_message_handler(command_match,commands=['Матч⚔'])
     dp.register_message_handler(command_table,commands=['Таблица📜'])
     dp.register_message_handler(command_players,commands=['Состав💂‍♂️'])
     dp.register_message_handler(command_about,commands=['Бот📌'])
     dp.register_message_handler(command_rules,commands=['Правила❗'])
     dp.register_message_handler(command_youtube,commands=['YouTube🎬'])
-    dp.register_message_handler(command_stream,commands=['Трансляция:'])
+    dp.register_message_handler(command_stream,commands=['Трансляция⚽'])
     dp.register_message_handler(command_memories,commands=['Воспоминания✨'])

@@ -1,12 +1,13 @@
+from termios import B50
 from aiogram.types import ReplyKeyboardMarkup , KeyboardButton
 
 
-b1= KeyboardButton ('/Помощь🆙')
-b2= KeyboardButton ('/Матч⚔')
-b3= KeyboardButton ('/Таблица📜')
-b4= KeyboardButton ('/Состав💂‍♂️')
-b5= KeyboardButton ('/Бот📌')
-b6= KeyboardButton ('/Правила❗')
+b6= KeyboardButton ('Трансляция⚽')
+b3= KeyboardButton ('/Матч⚔')
+b4= KeyboardButton ('/Таблица📜')
+b5= KeyboardButton ('/Состав💂‍♂️')
+b1= KeyboardButton ('/Бот📌')
+b2= KeyboardButton ('/Правила❗')
 b7= KeyboardButton ('/Воспоминания✨')
 b8=KeyboardButton ('/YouTube🎬')
 
