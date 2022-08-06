@@ -2,7 +2,7 @@ from termios import B50
 from aiogram.types import ReplyKeyboardMarkup , KeyboardButton
 
 
-b6= KeyboardButton ('Трансляция⚽')
+b6= KeyboardButton ('/Трансляция⚽')
 b3= KeyboardButton ('/Матч⚔')
 b4= KeyboardButton ('/Таблица📜')
 b5= KeyboardButton ('/Состав💂‍♂️')
