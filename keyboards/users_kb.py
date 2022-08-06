@@ -1,13 +1,13 @@
 from aiogram.types import ReplyKeyboardMarkup , KeyboardButton
 
 
-b1= KeyboardButton ('/help')
-b2= KeyboardButton ('/match')
-b3= KeyboardButton ('/table')
-b4= KeyboardButton ('/players')
-b5= KeyboardButton ('/about')
-b6= KeyboardButton ('/rules')
-b7= KeyboardButton ('/memories')
+b1= KeyboardButton ('Помощь 🆙')
+b2= KeyboardButton ('След.матч ⚔ ')
+b3= KeyboardButton ('Таблица АПЛ 📜')
+b4= KeyboardButton ('Игроки Челси 💂‍♂️')
+b5= KeyboardButton ('О боте 📌')
+b6= KeyboardButton ('Правила ❗')
+b7= KeyboardButton ('Воспоминания ✨')
 
 kb_users = ReplyKeyboardMarkup (resize_keyboard=True )
 
