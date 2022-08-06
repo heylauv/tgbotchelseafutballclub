@@ -2,9 +2,9 @@ from aiogram.types import ReplyKeyboardMarkup , KeyboardButton
 
 
 b1= KeyboardButton ('/Помощь🆙')
-b2= KeyboardButton ('/Матч⚔ ')
-b3= KeyboardButton ('/Таблица_АПЛ📜')
-b4= KeyboardButton ('/Игроки_Челси💂‍♂️')
+b2= KeyboardButton ('/Матч⚔')
+b3= KeyboardButton ('/Таблица📜')
+b4= KeyboardButton ('/Состав💂‍♂️')
 b5= KeyboardButton ('/Бот📌')
 b6= KeyboardButton ('/Правила❗')
 b7= KeyboardButton ('/Воспоминания✨')

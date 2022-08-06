@@ -20,7 +20,7 @@ async def command_help (message: types.Message):
 
 #@dp.message_handler(commands=['хелп'])
 async def command_helps (message: types.Message):
-    await bot.send_message(message.from_user.id, 'Инфа о кнопках:\nМатч ⚔-Показывает след.матч.\nТаблица АПЛ 📜-Таблица АПЛ на текущий момент.\nИгроки Челси 💂‍♂️-Игроки фк"Челси".\nБот 📌-Инфа о боте.\nПравила ❗-Правила чата.\nВоспоминания ✨-Воспоминания связанные с Челси.')
+    await bot.send_message(message.from_user.id, 'Инфа о кнопках:\n Матч⚔ -Показывает след.матч.\n Таблица📜 -Таблица АПЛ на текущий момент.\n Состав💂‍♂️ -Игроки фк"Челси".\n Бот📌 -Инфа о боте.\n Правила❗-Правила чата.\n Воспоминания✨ -Воспоминания связанные с Челси.\n YouTube🎬 -Поиск видео в Ютубе.')
 
 
 #@dp.message_handler(commands=['матч'])
@@ -48,7 +48,7 @@ async def command_rules(message: types.Message):
     await bot.send_message(message.from_user.id, 'ПРАВИЛА ЧАТА:\nЗапрещается:\n1.Приминение открытого или заув.мата\n2.Дискриминация\n3.Пропаганда\n4.Оскорбление участников\n5.Провокация\nПРАВИЛА БУДУТ ДОПОЛНЯТЬСЯ!' )
 
 async def command_youtube(message:types.Message):
-    await bot.send_message(message.from_user.id,'Бот умеет искать видео в YouTube!\nВоспользоваться:\n Пропишите @StamfordLionBot и название видео.\n Работает как и в лс так и чатах!')
+    await bot.send_message(message.from_user.id,'Бот умеет искать видео в YouTube!\nПропишите @StamfordLionBot и название видео.\nРаботает как в лс так и чатах!')
 
 
 async def command_memories(message: types.Message):
@@ -62,9 +62,9 @@ def rg_handlers_users (dp=Dispatcher):
     dp.register_message_handler(command_bot,commands=['bot'])
     dp.register_message_handler(command_help,commands=['help'])
     dp.register_message_handler(command_helps,commands=['Помощь🆙'])
-    dp.register_message_handler(command_match,commands=['Матч⚔ '])
-    dp.register_message_handler(command_table,commands=['Таблица_АПЛ📜'])
-    dp.register_message_handler(command_players,commands=['Игроки_Челси💂‍♂️'])
+    dp.register_message_handler(command_match,commands=['Матч⚔'])
+    dp.register_message_handler(command_table,commands=['Таблица📜'])
+    dp.register_message_handler(command_players,commands=['Состав💂‍♂️'])
     dp.register_message_handler(command_about,commands=['Бот📌'])
     dp.register_message_handler(command_rules,commands=['Правила❗'])
     dp.register_message_handler(command_youtube,commands=['YouTube🎬'])
