@@ -6,4 +6,4 @@ button_delete= KeyboardButton ('/Воспоминание➖')
 #button_otmena= KeyboardButton ('/Отмена❌')
 button_return_user= KeyboardButton ('/Меню✅')
 
-button_case_admin = ReplyKeyboardMarkup (resize_keyboard=True).row(button_load).row(button_delete).row(button_return_user)
+button_case_admin = ReplyKeyboardMarkup (resize_keyboard=True).add(button_load).insert(button_delete).add(button_return_user)

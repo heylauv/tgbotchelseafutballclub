@@ -12,4 +12,4 @@ b8=KeyboardButton ('/YouTube🎬')
 
 kb_users = ReplyKeyboardMarkup (resize_keyboard=True )
 
-kb_users.add(b1).insert(b2).add(b3).insert(b4).add(b5).insert(b6).row(b7).row(b8)
+kb_users.add(b1).insert(b2).add(b3).insert(b4).add(b5).insert(b6).add(b7).insert(b8)

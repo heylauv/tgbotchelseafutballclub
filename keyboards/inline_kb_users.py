@@ -15,3 +15,8 @@ urlkbuser3 = InlineKeyboardMarkup (row_width=1)
 
 urlbutton3 = InlineKeyboardButton (text='Состав', url='https://inlnk.ru/za74VV')
 urlkbuser3.add(urlbutton3)
+
+urlstream4 = InlineKeyboardMarkup(row_width=1)
+
+urlstreambutton4 = InlineKeyboardButton (text="Трансляция",url='http://surl.li/cpydm')
+urlstream4.add(urlstreambutton4)
